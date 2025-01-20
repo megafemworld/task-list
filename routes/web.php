@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 Route::get('/', function()
@@ -21,7 +22,9 @@ Route::get('/tasks/{id}', function ($id){
     return view('show', ['task' => \App\Models\Task::findOrFail($id)]);
 })->name('tasks.show');
 
-
+Route::post('/tasks', function (Request $request) {
+    dd($request->all());
+})->name('tasks.store');
 
 // Route::get('/hello', function () {
 //     return 'Hello World';
